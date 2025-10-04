@@ -19,7 +19,7 @@ namespace PortalAcademico.Models
         public EstadoMatricula Estado { get; set; }
 
         // Navigation properties
-        public virtual required Curso Curso { get; set; }
-        public virtual required IdentityUser Usuario { get; set; }
+        public virtual Curso? Curso { get; set; }
+        public virtual IdentityUser? Usuario { get; set; }
     }
 }

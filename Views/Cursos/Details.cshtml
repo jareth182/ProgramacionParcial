@@ -1,0 +1,47 @@
+@model PortalAcademico.Models.Curso
+
+@{
+    ViewData["Title"] = "Detalles del Curso";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<div>
+    <h4>@Model.Nombre</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Codigo)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Codigo)</dd>
+        
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Creditos)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Creditos)</dd>
+        
+        <dt class="col-sm-2">Cupo Máximo</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.CupoMaximo)</dd>
+        
+        <dt class="col-sm-2">Horario</dt>
+        <dd class="col-sm-10">@Model.HorarioInicio.ToString("HH:mm") - @Model.HorarioFin.ToString("HH:mm")</dd>
+    </dl>
+</div>
+<div>
+    <form asp-controller="Matriculas" asp-action="Inscribir" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="cursoId" value="@Model.Id" />
+        <button type="submit" class="btn btn-success">Inscribirse</button>
+    </form>
+    <br>
+    <a asp-action="Index">Volver al Catálogo</a>
+</div>
