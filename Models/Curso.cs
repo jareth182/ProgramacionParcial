@@ -26,5 +26,8 @@ namespace PortalAcademico.Models
         public TimeOnly HorarioFin { get; set; }
 
         public bool Activo { get; set; } = true;
+
+        // Navigation property
+        public virtual ICollection<Matricula>? Matriculas { get; set; }
     }
 }

@@ -37,8 +37,13 @@
                                 Volver a: @Context.Session.GetString("LastCourseName")
                             </a>
                         </li>
-                    }
-                </ul>
+                        @if (User.IsInRole("Coordinador"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Coordinador" asp-action="Index">Panel Coordinador</a>
+                            </li>
+                        }
+                    </ul>
                     <partial name="_LoginPartial" />
             </div>
         </nav>
