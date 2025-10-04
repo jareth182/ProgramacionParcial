@@ -1,0 +1,33 @@
+@model IEnumerable<PortalAcademico.Models.Curso>
+
+@{
+    ViewData["Title"] = "Catálogo de Cursos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Codigo)</th>
+            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.Creditos)</th>
+            <th>Horario</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Codigo)</td>
+                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.Creditos)</td>
+                <td>@item.HorarioInicio.ToString("HH:mm") - @item.HorarioFin.ToString("HH:mm")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Ver Detalles</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
