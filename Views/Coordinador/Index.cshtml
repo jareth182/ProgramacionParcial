@@ -1,0 +1,16 @@
+@model IEnumerable<PortalAcademico.Models.Curso>
+<h1>Panel de Cursos</h1>
+<p><a asp-action="Create" class="btn btn-success">Crear Nuevo Curso</a></p>
+<table class="table">
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="MatriculasPorCurso" asp-route-id="@item.Id">Ver Matrículas</a>
+                <a asp-action="Deactivate" asp-route-id="@item.Id" class="text-danger">Desactivar</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
