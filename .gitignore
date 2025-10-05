@@ -1,2 +1,7 @@
 obj/
 bin/
+
+*.db
+*.db-journal
+
+appsettings.Development.json
